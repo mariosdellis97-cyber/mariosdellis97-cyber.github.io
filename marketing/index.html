@@ -67,7 +67,7 @@
   .videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .video { background: var(--card); border-radius: 16px; overflow: hidden; box-shadow: 0 12px 32px rgba(11,31,59,.09); }
   .player { position: relative; aspect-ratio: 16 / 9; background: var(--navy); }
-  .player img, .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+  .player video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--navy); }
   .play { position: absolute; inset: 0; width: 100%; border: 0; cursor: pointer; display: grid; place-items: center;
           background: linear-gradient(180deg, rgba(11,31,59,0) 35%, rgba(11,31,59,.6)); }
   .play i { width: 70px; height: 70px; border-radius: 50%; background: var(--blue); display: grid; place-items: center;
@@ -80,8 +80,6 @@
   .video h3 { font-size: 21px; font-weight: 700; color: var(--navy); }
   .client { color: var(--blue-ink); font-weight: 500; font-size: 14.5px; margin: 3px 0 10px; }
   .video p { color: var(--muted); font-size: 15px; }
-  .ext { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--blue-ink); }
-  .ext:hover { text-decoration: underline; }
 
   /* Accounts */
   .accounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
@@ -153,34 +151,34 @@
   <section id="ads">
     <div class="kicker">Video ads</div>
     <h2>Bar showcases made with Signal &amp; Scale</h2>
-    <p class="sub">Promotional films I made with my agency for two London cocktail bars. I shoot photo and video with my own camera and lighting kit. Tap a video to play it.</p>
+    <p class="sub">Promotional films I made with my agency for two London cocktail bars. Tap a video to play it.</p>
 
     <div class="videos">
       <article class="video">
         <div class="player">
-          <img src="booking-office-1869.jpg" alt="Booking Office 1869 bar with the Sips of Time cocktail menu" loading="lazy">
-          <button class="play" data-id="1hznP4SiXrs-i9rVAlgl6PmaMtYuqw-CK" aria-label="Play the Booking Office 1869 cocktail menu launch video"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button>
+          <video src="booking-office-1869.mp4" poster="booking-office-1869.jpg" preload="none" playsinline
+                 aria-label="Booking Office 1869 cocktail menu launch video"></video>
+          <button class="play" aria-label="Play the Booking Office 1869 cocktail menu launch video"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button>
         </div>
         <div class="video-body">
           <span class="tag">Menu launch</span>
           <h3>Sips of Time</h3>
           <div class="client">Booking Office 1869 · 5-star hotel bar, London</div>
           <p>A launch film for the hotel bar's new cocktail menu.</p>
-          <a class="ext" href="https://drive.google.com/file/d/1hznP4SiXrs-i9rVAlgl6PmaMtYuqw-CK/view" target="_blank" rel="noopener">Open in Google Drive ↗</a>
         </div>
       </article>
 
       <article class="video">
         <div class="player">
-          <img src="without-papers.jpg" alt="The Without Papers bar sign in Shoreditch" loading="lazy">
-          <button class="play" data-id="1lDigtbgTQ2Gsig0TB4w2CkAEfuZe3fG5" aria-label="Play the Without Papers bar showcase video"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button>
+          <video src="without-papers.mp4" poster="without-papers.jpg" preload="none" playsinline
+                 aria-label="Without Papers bar showcase video"></video>
+          <button class="play" aria-label="Play the Without Papers bar showcase video"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button>
         </div>
         <div class="video-body">
           <span class="tag">Bar showcase</span>
           <h3>Without Papers</h3>
           <div class="client">Italian-British cocktail bar · Shoreditch, London</div>
           <p>A brand showcase film for the bar.</p>
-          <a class="ext" href="https://drive.google.com/file/d/1lDigtbgTQ2Gsig0TB4w2CkAEfuZe3fG5/view" target="_blank" rel="noopener">Open in Google Drive ↗</a>
         </div>
       </article>
     </div>
@@ -240,14 +238,13 @@
 <footer>© Marios Dellis · Marketing · Brand · Content</footer>
 
 <script>
-  // Swap the poster for the Google Drive player only when someone taps play, so the page loads fast.
+  // Videos load nothing until tapped; the big play button then hands over to the native controls.
   document.querySelectorAll('.play').forEach(btn => btn.addEventListener('click', () => {
-    const frame = document.createElement('iframe');
-    frame.src = `https://drive.google.com/file/d/${btn.dataset.id}/preview`;
-    frame.allow = 'autoplay; fullscreen';
-    frame.allowFullscreen = true;
-    frame.title = btn.getAttribute('aria-label');
-    btn.parentElement.replaceChildren(frame);
+    const video = btn.parentElement.querySelector('video');
+    document.querySelectorAll('.player video').forEach(v => { if (v !== video) v.pause(); });
+    video.controls = true;
+    btn.remove();
+    video.play();
   }));
 </script>
 </body>
