@@ -49,7 +49,7 @@
   .btn-ghost:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
 
   /* Stats */
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: -76px; position: relative; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: -76px; position: relative; }
   .stat { background: var(--card); border-top: 4px solid var(--blue); border-radius: 0 0 14px 14px; padding: 20px 22px 22px;
           box-shadow: 0 12px 32px rgba(11,31,59,.09); }
   .stat b { display: block; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 32px; line-height: 1; color: var(--navy); }
@@ -108,7 +108,7 @@
   .cta .actions { margin-top: 0; }
   footer { text-align: center; color: var(--muted); font-size: 13.5px; padding: 36px 0 44px; }
 
-  @media (max-width: 900px) { .accounts { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px) { .accounts, .stats { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 720px) {
     .hero { padding: 40px 0 108px; }
     .mono { margin-bottom: 24px; }
@@ -131,8 +131,9 @@
     <div class="mono">MD</div>
     <div class="eyebrow">Marketing Portfolio</div>
     <h1>MARIOS <span>DELLIS</span></h1>
-    <p class="lede">Commercially minded marketer and co&#8209;founder of the agency <b>Signal &amp; Scale</b>. Here are two video ads
-      we made for London cocktail bars, and the Instagram accounts I've managed.</p>
+    <p class="lede">Commercially minded marketer, co&#8209;founder of the agency <b>Signal &amp; Scale</b>, with an MSc
+      dissertation on <b>consumer psychology</b>. Here are two video ads I made with my agency for London cocktail bars,
+      and the Instagram accounts I've managed.</p>
     <div class="actions">
       <a class="btn btn-main" href="#ads"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch the ads</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/marios-dellis/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.3 18.3V10H5.7v8.3h2.6zM7 8.9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm11.3 9.4v-4.6c0-2.4-1.3-3.5-3-3.5a2.6 2.6 0 0 0-2.4 1.3V10h-2.6v8.3h2.6v-4.4c0-1.2.2-2.3 1.7-2.3s1.5 1.4 1.5 2.4v4.3h2.2z"/></svg>LinkedIn</a>
@@ -144,14 +145,15 @@
 <main class="wrap">
   <div class="stats">
     <div class="stat"><b>6,000</b><span>Instagram followers in two months for Sushi Pops London</span></div>
+    <div class="stat"><b>Sold out</b><span>live-music events at Soul Mama London, backed by my content</span></div>
     <div class="stat"><b>2</b><span>businesses built from scratch: an agency and a pop-up bar</span></div>
-    <div class="stat"><b>MSc</b><span>Business &amp; Marketing, Queen Mary University of London</span></div>
+    <div class="stat"><b>MSc</b><span>Queen Mary University of London, with a dissertation on consumer psychology</span></div>
   </div>
 
   <section id="ads">
     <div class="kicker">Video ads</div>
     <h2>Bar showcases made with Signal &amp; Scale</h2>
-    <p class="sub">Promotional films my agency created for two London cocktail bars. Tap a video to play it.</p>
+    <p class="sub">Promotional films I made with my agency for two London cocktail bars. I shoot photo and video with my own camera and lighting kit. Tap a video to play it.</p>
 
     <div class="videos">
       <article class="video">
@@ -202,7 +204,8 @@
         <span class="ig"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-3.6a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg></span>
         <b>Soul Mama London</b>
         <span class="handle">@soulmamalondon</span>
-        <p>Live-music restaurant and venue in Stratford, London.</p>
+        <span class="badge">Sold-out events</span>
+        <p>Video and social content for the Stratford live-music venue, supporting campaigns that regularly contributed to sold-out events.</p>
         <span class="go">View on Instagram ↗</span>
       </a>
       <a class="acct" href="https://www.instagram.com/signalnscale/" target="_blank" rel="noopener">
